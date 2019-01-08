@@ -2,6 +2,7 @@
 
 CWeapon::CWeapon() 
 {
+    std::srand(std::time(nullptr)); // ready random generator
     this->m_nom="fist";
     this->m_bonus=0;
     this->m_damage=5;
@@ -10,6 +11,7 @@ CWeapon::CWeapon()
 
 CWeapon::CWeapon(std::string p_nom, int p_damage,int p_bonus,int p_criticalStrike)
 {
+    std::srand(std::time(nullptr)); // ready random generator
     this->m_nom=p_nom;
     this->m_bonus=p_bonus;
     this->m_damage=p_damage;
@@ -23,7 +25,6 @@ CWeapon::~CWeapon()
 
 bool CWeapon::criticalStrike()
 {
-    std::srand(std::time(nullptr)); // ready random generator
     int attack = std::rand() % 101;
     if (attack >= m_criticalStrike)
         return true;
