@@ -46,13 +46,13 @@ void CCharacter::action()
     std::cout << " Call to  CCharacter::action  not defined"  << std::endl;
 }
 
-void CCharacter::armedAttack(CCharacter p_ennemy)
+void CCharacter::armedAttack(CCharacter &p_ennemy)
 {
     std::cout << " Call to  CCharacter::armedAttack  not defined"  << std::endl;
 }
 
 
-void CCharacter::unarmedAttack(CCharacter p_ennemy)
+void CCharacter::unarmedAttack(CCharacter &p_ennemy)
 {
     std::cout << " Call to  CCharacter::unarmedAttack  not defined"  << std::endl;
 }

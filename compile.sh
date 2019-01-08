@@ -1,7 +1,7 @@
 g++ -Wall -c CGameSettings.cpp -o CGameSettings.o
 g++ -Wall -c CWeapon.cpp -o CWeapon.o
 g++ -Wall -c CCharacter.cpp -o  CCharacter.o
-#g++ -Wall -c CWarrior.cpp -o CWarrior.o
+g++ -Wall -c CWarrior.cpp -o CWarrior.o
 g++ -Wall -c CStaff.cpp -o CStaff.o
 g++ -Wall -c CSword.cpp -o CSword.o
 g++ -Wall -c CBow.cpp -o CBow.o
