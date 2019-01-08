@@ -26,6 +26,8 @@ CCharacter::~CCharacter()
 void CCharacter::applyDamage(int p_damage)
 {
     m_hp -= p_damage;
+    if(m_hp < 0)
+        m_hp = 0;
 }
 
 bool CCharacter::isAlive()

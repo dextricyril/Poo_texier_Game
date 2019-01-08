@@ -17,8 +17,8 @@ class CCharacter
         CCharacter(int p_hpMax, int p_dodge, CWeapon &p_weapon , std::string p_name);
         virtual ~CCharacter();
         virtual void action();
-        virtual void unarmedAttack(CCharacter p_ennemy);
-        virtual void armedAttack(CCharacter p_ennemy);
+        virtual void unarmedAttack(CCharacter &p_ennemy);
+        virtual void armedAttack(CCharacter &p_ennemy);
         virtual void applyDamage(int p_damage);
         bool dodge();
         bool isAlive();
