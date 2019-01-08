@@ -6,7 +6,8 @@
 class CWarrior : public CCharacter
 {
     public : 
-        CWarrior(int p_hpMax, int p_dodge, CWeapon &p_weapon);
+        CWarrior(int p_hpMax, int p_dodge,int p_attack,int p_shield, CWeapon &p_weapon);
+        CWarrior(int p_hpMax, int p_dodge,int p_attack, int p_shield);
         ~CWarrior();
         int m_attack;
         int m_shield;
@@ -15,6 +16,7 @@ class CWarrior : public CCharacter
         void action();
         void defend();
         void repair();
+        void setSword(CSword* sword);
         void unarmedAttack(CCharacter &p_ennemy);
         void armedAttack(CCharacter &p_ennemy);
         void applyDamage(int p_damage);

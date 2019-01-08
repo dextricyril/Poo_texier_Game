@@ -3,6 +3,7 @@
 CCharacter::CCharacter()
 {
     m_hpMax = 100;
+    m_hp = m_hpMax;
     m_dodge = 0;
     m_weapon = new CWeapon();;
     m_name = "DefaultDan";
@@ -13,10 +14,23 @@ CCharacter::CCharacter(int p_hpMax, int p_dodge, CWeapon &p_weapon, std::string 
     /* initialize random seed: */
     srand (time(NULL));
     m_hpMax = p_hpMax;
+    m_hp = p_hpMax;
     m_dodge = p_dodge;
     m_weapon = &p_weapon;
     m_name = p_name;
 }
+
+CCharacter::CCharacter(int p_hpMax, int p_dodge,  std::string p_name)
+{
+    /* initialize random seed: */
+    srand (time(NULL));
+    m_hpMax = p_hpMax;
+    m_hp = p_hpMax;
+    m_dodge = p_dodge;
+    m_weapon = NULL;
+    m_name = p_name;
+}
+
 
 CCharacter::~CCharacter()
 {

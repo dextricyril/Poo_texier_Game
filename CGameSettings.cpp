@@ -1,9 +1,13 @@
 #include "CGameSettings.h"
 
+#define readNoTab  readLine.substr(1,readLine.size())
+
 CGameSettings::~CGameSettings()
 {
 
 }
+
+
 
 CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weaponFilePath)
 {
@@ -40,6 +44,16 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
             }
             if (readLine.find("Guerrier") != std::string::npos) 
             {
+                std::string name;
+                int health, dodge, attack, shield;
+                if( getline (m_characterFile,readLine) )
+                    name = readNoTab;
+                if( getline (m_characterFile,readLine) )
+                    health = std::stoi(readLine);
+                if( getline (m_characterFile,readLine) )
+                    attack = std::stoi(readLine);
+                if( getline (m_characterFile,readLine) )
+                    shield = std::stoi(readLine);
                 
             }
         }
