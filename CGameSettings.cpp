@@ -1,6 +1,5 @@
 #include "CGameSettings.h"
 
-#define readNoTab  readLine.substr(1,readLine.size())
 
 CGameSettings::~CGameSettings()
 {
@@ -11,6 +10,12 @@ CGameSettings::~CGameSettings()
 
 CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weaponFilePath)
 {
+    /***
+     * 
+     * 
+     * Create hashmap key name characters and value characters
+     * 
+     */
     m_characterFile.open(p_characterFilePath);
     m_weaponFile.open(p_weaponFilePath);
 
@@ -47,7 +52,7 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
                 std::string name;
                 int health, dodge, attack, shield;
                 if( getline (m_characterFile,readLine) )
-                    name = readNoTab;
+                    name = readLine.substr(1,readLine.size());
                 if( getline (m_characterFile,readLine) )
                     health = std::stoi(readLine);
                 if( getline (m_characterFile,readLine) )

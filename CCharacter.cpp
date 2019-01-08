@@ -41,6 +41,7 @@ void CCharacter::applyDamage(int p_damage)
 {
     if(this->dodge())
     {
+        std::cout << "Attack dodged"  << std::endl;
         return;
     }
     m_hp -= p_damage;

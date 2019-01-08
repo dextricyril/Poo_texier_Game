@@ -56,11 +56,11 @@ void CWarrior::armedAttack(CCharacter &p_ennemy)
 {
     if (m_weapon == NULL)
     {
-        std::cout << "Armed attack without sword, using fist";
+        std::cout << "Armed attack without sword, using fist" << std::endl;
         unarmedAttack(p_ennemy);
         return;
     }
-    
+
     float dem;
     if(m_weapon->criticalStrike())
     {
