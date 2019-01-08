@@ -1,6 +1,6 @@
 #include "CWarrior.h"
 
-CWarrior::CWarrior()(int p_hpMax, int p_dodge, CWeapon &p_weapon)
+CWarrior::CWarrior(int p_hpMax, int p_dodge, CWeapon &p_weapon)
 {
     /* initialize random seed: */
     srand (time(NULL));
@@ -14,7 +14,7 @@ CWarrior::~CWarrior()
 
 }
 
-CWarrior::action()
+void CWarrior::action()
 {
     if (isAlive())
     {
@@ -24,10 +24,17 @@ CWarrior::action()
     else {}    
 }
 
-CWarrior::armedAttack(CCharacter p_ennemy)
+void CWarrior::armedAttack(CCharacter p_ennemy)
 {
     //TODO Finish
+    /*
     if weapon is broken 
     weapon durabilité--
-    p_enney.applyDamage((m_attack+m_damage)
+    p_enney.applyDamage((m_attack+m_damage)*/
+}
+
+void CWarrior::applyDamage(int p_damage)
+{
+
+    
 }

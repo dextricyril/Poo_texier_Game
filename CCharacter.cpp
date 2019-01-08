@@ -1,18 +1,26 @@
 #include "CCharacter.h"
 
+CCharacter::CCharacter()
+{
+    m_hpMax = 100;
+    m_dodge = 0;
+    m_weapon = new CWeapon();;
+    m_name = "DefaultDan";
+}
 
-CCharacter::CCharacter(int p_hpMax, int p_dodge, CWeapon &p_weapon)
+CCharacter::CCharacter(int p_hpMax, int p_dodge, CWeapon &p_weapon, std::string p_name)
 {
     /* initialize random seed: */
     srand (time(NULL));
     m_hpMax = p_hpMax;
     m_dodge = p_dodge;
     m_weapon = &p_weapon;
+    m_name = p_name;
 }
 
 CCharacter::~CCharacter()
 {
-
+    
 }
 
 void CCharacter::applyDamage(int p_damage)
