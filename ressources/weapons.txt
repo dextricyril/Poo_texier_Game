@@ -1,0 +1,36 @@
+Baton
+	Baguette de Sureau
+	7
+	20
+	15
+	6
+Epee
+	Excalibur
+	15
+	10
+	20
+	20
+Arc
+	Gandiva
+	12
+	-10
+	17
+	20
+Epee
+	Porte-cendre
+	17
+	-30
+	10
+	200
+Arc
+	Thori'dal
+	10
+	10
+	12
+	10	
+Baton
+	Atiesh
+	10
+	-15
+	12
+	7
