@@ -39,6 +39,10 @@ CCharacter::~CCharacter()
 
 void CCharacter::applyDamage(int p_damage)
 {
+    if(this->dodge())
+    {
+        return;
+    }
     m_hp -= p_damage;
     if(m_hp < 0)
         m_hp = 0;
