@@ -1,7 +1,7 @@
 #include "CStaff.h"
 
 CStaff::CStaff(std::string p_nom, int p_damage,int p_bonus,
-            int p_criticalStrike,int p_manaCost)
+            float p_criticalStrike,int p_manaCost)
 {
     m_nom = p_nom;
     m_damage = p_damage;

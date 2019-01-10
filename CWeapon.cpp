@@ -9,7 +9,7 @@ CWeapon::CWeapon()
     this->m_criticalStrike=0;
 }
 
-CWeapon::CWeapon(std::string p_nom, int p_damage,int p_bonus,int p_criticalStrike)
+CWeapon::CWeapon(std::string p_nom, int p_damage,int p_bonus,float p_criticalStrike)
 {
     std::srand(std::time(nullptr)); // ready random generator
     this->m_nom=p_nom;
