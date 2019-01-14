@@ -32,7 +32,7 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
                 int health,agility;
                 float dodge;
                 if( getline (m_characterFile,readLine) )
-                    name = readLine.substr(1); // remove tab
+                    name = readLine.substr(1,readLine.size()); // remove tab
                 if( getline (m_characterFile,readLine) )
                     health = std::stoi(readLine);
                 if( getline (m_characterFile,readLine) )
@@ -50,15 +50,31 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
 
             if (readLine.find("Mage") != std::string::npos) 
             {
-                
+                std::string name;
+                int health, intellect, mana;
+                float dodge;
+                if( getline(m_characterFile,readLine) )
+                    name = readLine.substr(1,readLine.size()); // remove tab
+                if( getline (m_characterFile,readLine) )
+                    health = std::stoi(readLine);
+                if( getline (m_characterFile,readLine) )
+                    dodge = std::stoi(readLine);
+                if( getline (m_characterFile,readLine) )
+                    intellect = std::stoi(readLine);
+                if( getline (m_characterFile,readLine) )
+                    mana = std::stoi(readLine);
+                CCharacter* newPlayer = new CWizzard(name,health,dodge,intellect,mana);
+                std::cout << "New wizard " << newPlayer->m_name << std::endl;
+                character_list[newPlayer->m_name] = newPlayer;
             }
+
             if (readLine.find("Guerrier") != std::string::npos) 
             {
                 std::string name;
                 int health, attack, shield;
                 float dodge;
                 if( getline (m_characterFile,readLine) )
-                    name = readLine;//readLine.substr(1,readLine.size());
+                    name = readLine.substr(1,readLine.size());//readLine.substr(1,readLine.size());
                 if( getline (m_characterFile,readLine) )
                     health = std::stoi(readLine);
                 if( getline (m_characterFile,readLine) )
@@ -70,7 +86,8 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
 
 
                 CCharacter* newPlayer = new CWarrior(name, health,dodge,attack,shield);
-                std::cout << "BANANANNANA " << newPlayer->m_name << std::endl;
+                std::cout << "BANANANNANA " << std::endl;
+                std::cout<< newPlayer->m_name << std::endl;
                 character_list[newPlayer->m_name] = newPlayer; 
             }
         }
@@ -85,6 +102,7 @@ void CGameSettings::printCharacterList()
     for (const auto& x : character_list)
     {
         //std::cout <<  x.first   <<  "fisrt: " << std::endl;
-        std::cout  << x.second->m_name << "name:" <<  std::endl;
+        std::cout << "name: "  << x.second->m_name <<  std::endl;
+        std::cout  << "health point: " <<x.second->m_hp << std::endl;
     }
 }

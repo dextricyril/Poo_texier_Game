@@ -29,6 +29,7 @@ CArcher::~CArcher()
 
 void CArcher::action()
 {
+    std::cout<<" CArcher::action TO BE IMPLEMENTED" << std::endl;
     if(this->m_weapon->haveArrow())
     {
             
@@ -50,12 +51,12 @@ void CArcher::armedAttack(CCharacter &p_ennemy)
     float dem;
     if(m_weapon->criticalStrike())
     {
-        dem = m_agility * (m_turnAimed*1.33);
+        dem = m_agility * (1+(m_turnAimed*1.33));
         dem = 0.90 * (dem + 2 *m_weapon->m_damage); // twice weapon damage
     }
     else
     {
-        dem = m_agility * (m_turnAimed*1.33);
+        dem = m_agility * (1 + (m_turnAimed*1.33));
         dem = 0.90 * (dem + m_weapon->m_damage);
     }
     m_turnAimed = 0;

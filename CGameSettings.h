@@ -8,7 +8,7 @@
 #include "CCharacter.h"
 #include "CWarrior.h"
 #include "CArcher.h"
-
+#include "CWizard.h"
 #include "CBow.h"
 #include "CStaff.h"
 #include "CSword.h"

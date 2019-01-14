@@ -6,8 +6,8 @@
 class CArcher : public CCharacter
 {
     public : 
-        CArcher(std::string p_name, int p_hpMax, float p_dodge,int m_agility, CWeapon &p_weapon);
-        CArcher(std::string p_name, int p_hpMax, float p_dodge,int m_agility);
+        CArcher(std::string p_name, int p_hpMax, float p_dodge,int p_agility, CWeapon &p_weapon);
+        CArcher(std::string p_name, int p_hpMax, float p_dodge,int p_agility);
         ~CArcher();
         int m_agility;
         int m_turnAimed;
