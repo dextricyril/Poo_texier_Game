@@ -6,8 +6,8 @@
 class CWarrior : public CCharacter
 {
     public : 
-        CWarrior(int p_hpMax, int p_dodge,int p_attack,int p_shield, CWeapon &p_weapon);
-        CWarrior(int p_hpMax, int p_dodge,int p_attack, int p_shield);
+        CWarrior(std::string p_name, int p_hpMax, float p_dodge,int p_attack,int p_shield, CWeapon &p_weapon);
+        CWarrior(std::string p_name, int p_hpMax, float p_dodge,int p_attack, int p_shield);
         ~CWarrior();
         int m_attack;
         int m_shield;

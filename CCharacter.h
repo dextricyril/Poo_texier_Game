@@ -14,8 +14,8 @@ class CCharacter
         float m_dodge;
         CWeapon* m_weapon;
         CCharacter();
-        CCharacter(int p_hpMax, int p_dodge, CWeapon &p_weapon , std::string p_name);
-        CCharacter(int p_hpMax, int p_dodge,  std::string p_name); // without weapon constructor
+        CCharacter(std::string p_name, int p_hpMax, float p_dodge, CWeapon &p_weapon );
+        CCharacter(std::string p_name, int p_hpMax, float p_dodge); // without weapon constructor
         virtual ~CCharacter();
         virtual void action();
         virtual void unarmedAttack(CCharacter &p_ennemy);
