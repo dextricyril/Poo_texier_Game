@@ -26,6 +26,7 @@ class CGameSettings
         CGameSettings(std::string p_characterFilePath, std::string p_weaponFilePath);
         ~CGameSettings();
         void printCharacterList();
+        void printWeaponList();
 };
 
 #endif

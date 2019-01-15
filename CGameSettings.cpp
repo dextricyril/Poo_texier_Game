@@ -25,7 +25,7 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
     {
         if (!(readLine.at(0) == '\t')) // get classes from file
         {
-            std::cout << readLine <<std::endl;
+            
             if (readLine.find("Archer") != std::string::npos) 
             {
                 std::string name;
@@ -39,12 +39,8 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
                     dodge = std::stoi(readLine);
                 if( getline (m_characterFile,readLine) )
                     agility = std::stoi(readLine);
-                //std::cout << " name is  " << name << std::endl;
-                //std::cout << "  health is " << health << std::endl;
-                
                 
                 CCharacter* newPlayer = new CArcher(name,health,dodge,agility);
-                std::cout << "New archer " << newPlayer->m_name << std::endl;
                 character_list[newPlayer->m_name] = newPlayer;
             }
 
@@ -64,7 +60,6 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
                 if( getline (m_characterFile,readLine) )
                     mana = std::stoi(readLine);
                 CCharacter* newPlayer = new CWizzard(name,health,dodge,intellect,mana);
-                std::cout << "New wizard " << newPlayer->m_name << std::endl;
                 character_list[newPlayer->m_name] = newPlayer;
             }
 
@@ -86,12 +81,67 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
 
 
                 CCharacter* newPlayer = new CWarrior(name, health,dodge,attack,shield);
-                std::cout << "BANANANNANA " << std::endl;
-                std::cout<< newPlayer->m_name << std::endl;
                 character_list[newPlayer->m_name] = newPlayer; 
             }
         }
             
+    }
+    while ( getline (m_weaponFile,readLine) ) 
+    {
+        if (!(readLine.at(0) == '\t')) // get classes from file
+        {
+            if(readLine.find("Baton") != std::string::npos)
+            {
+                std::string name;
+                int damage, bonus, critical, manaCost;
+                if( getline (m_weaponFile,readLine) )
+                    name = readLine.substr(1,readLine.size());
+                if( getline (m_weaponFile,readLine) )
+                    damage = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    bonus = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    critical = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    manaCost = std::stoi(readLine);
+                CWeapon* newWeapon = new CStaff(name,damage,bonus,critical,manaCost);
+                weapon_list[newWeapon->m_name] = newWeapon; 
+            }
+            if(readLine.find("Epee") != std::string::npos)
+            {
+                std::string name;
+                int damage, bonus, critical, durabMax;
+                if( getline (m_weaponFile,readLine) )
+                    name = readLine.substr(1,readLine.size());
+                if( getline (m_weaponFile,readLine) )
+                    damage = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    bonus = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    critical = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    durabMax = std::stoi(readLine);
+                CWeapon* newWeapon = new CSword(name,damage,bonus,critical,durabMax);
+                weapon_list[newWeapon->m_name] = newWeapon; 
+            }
+            if(readLine.find("Arc") != std::string::npos)
+            {
+                std::string name;
+                int damage, bonus, critical, arrow;
+                if( getline (m_weaponFile,readLine) )
+                    name = readLine.substr(1,readLine.size());
+                if( getline (m_weaponFile,readLine) )
+                    damage = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    bonus = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    critical = std::stoi(readLine);
+                if( getline (m_weaponFile,readLine) )
+                    arrow = std::stoi(readLine);
+                CWeapon* newWeapon = new CBow(name,damage,bonus,critical,arrow);
+                weapon_list[newWeapon->m_name] = newWeapon;
+            }
+        }
     }
     m_characterFile.close();
     m_weaponFile.close();
@@ -104,5 +154,15 @@ void CGameSettings::printCharacterList()
         //std::cout <<  x.first   <<  "fisrt: " << std::endl;
         std::cout << "name: "  << x.second->m_name <<  std::endl;
         std::cout  << "health point: " <<x.second->m_hp << std::endl;
+    }
+}
+
+void CGameSettings::printWeaponList()
+{
+    for (const auto& x : weapon_list)
+    {
+        //std::cout <<  x.first   <<  "fisrt: " << std::endl;
+        std::cout << "Weapon name: "  << x.second->m_name <<  std::endl;
+        std::cout  << "Damage point: " <<x.second->m_damage << std::endl;
     }
 }
