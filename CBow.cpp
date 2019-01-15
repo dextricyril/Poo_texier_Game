@@ -22,3 +22,7 @@ bool CBow::haveArrow()
     else 
         return false;
 }
+std::string CBow::getClass()
+{
+    return "CBow";
+}

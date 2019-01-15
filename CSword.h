@@ -10,6 +10,7 @@ class CSword : public CWeapon
         int m_durabilityMax;
         void use();
         bool isBroken();
+        std::string getClass();
         CSword(std::string p_nom, int p_damage,int p_bonus,int p_criticalStrike , int p_durability);
 };
 

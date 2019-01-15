@@ -9,3 +9,8 @@ CStaff::CStaff(std::string p_name, int p_damage,int p_bonus,
     m_criticalStrike = p_criticalStrike;
     m_manaCost = p_manaCost;
 }
+
+std::string CStaff::getClass()
+{
+    return "CStaff";
+}

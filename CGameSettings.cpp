@@ -164,5 +164,8 @@ void CGameSettings::printWeaponList()
         //std::cout <<  x.first   <<  "fisrt: " << std::endl;
         std::cout << "Weapon name: "  << x.second->m_name <<  std::endl;
         std::cout  << "Damage point: " <<x.second->m_damage << std::endl;
+        std::cout  << "Crit point: " <<x.second->m_criticalStrike << std::endl;
+        std::cout  << "Bonus point: " <<x.second->m_bonus << std::endl;
+        std::cout  << "Class: " <<x.second->getClass() << std::endl;
     }
 }

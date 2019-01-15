@@ -25,3 +25,8 @@ bool CSword::isBroken()
     else 
         return false;
 }
+
+std::string CSword::getClass()
+{
+    return "CSword";
+}

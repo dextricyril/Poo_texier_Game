@@ -23,6 +23,11 @@ CWeapon::~CWeapon()
 
 }
 
+std::string CWeapon::getClass()
+{
+    return "CWeapon";
+}
+
 bool CWeapon::criticalStrike()
 {
     int attack = std::rand() % 101;
