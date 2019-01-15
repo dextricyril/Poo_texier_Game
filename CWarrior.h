@@ -20,6 +20,7 @@ class CWarrior : public CCharacter
         void unarmedAttack(CCharacter &p_ennemy);
         void armedAttack(CCharacter &p_ennemy);
         void applyDamage(int p_damage);
+        std::string getClass();
 };
 
 #endif

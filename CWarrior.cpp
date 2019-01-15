@@ -104,3 +104,8 @@ void CWarrior::applyDamage(int p_damage)
             m_hp = 0;
     }
 }
+
+std::string CWarrior::getClass()
+{
+    return "CWarrior";
+}

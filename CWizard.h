@@ -18,6 +18,7 @@ class CWizzard : public CCharacter
     void setStaff(CStaff* bow);
     void unarmedAttack(CCharacter &p_ennemy);
     void armedAttack(CCharacter &p_ennemy);
+    std::string getClass();
     
 };
 

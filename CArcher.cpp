@@ -67,3 +67,8 @@ void CArcher::aim()
 {
     m_turnAimed++;
 }
+
+std::string CArcher::getClass()
+{
+    return "CArcher";
+}

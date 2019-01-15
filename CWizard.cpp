@@ -62,3 +62,8 @@ void CWizzard::recoverMana()
     m_mana += recovery;
 
 }
+
+std::string CWizzard::getClass()
+{
+    return "CWizzard";
+}

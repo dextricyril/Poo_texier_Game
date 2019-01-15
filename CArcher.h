@@ -17,6 +17,7 @@ class CArcher : public CCharacter
         void aim();
         void unarmedAttack(CCharacter &p_ennemy);
         void armedAttack(CCharacter &p_ennemy);
+        std::string getClass();
 };
 
 #endif

@@ -75,3 +75,8 @@ void CCharacter::unarmedAttack(CCharacter &p_ennemy)
 {
     std::cout << " Call to  CCharacter::unarmedAttack  not defined"  << std::endl;
 }
+
+std::string CCharacter::getClass()
+{
+    return "CCharacter";
+}
