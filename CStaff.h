@@ -8,7 +8,7 @@ class CStaff : public CWeapon
     public :
         int m_manaCost;
         CStaff(std::string p_nom, int p_damage,int p_bonus,
-        float p_criticalStrike,int p_manaCost);
+        int p_criticalStrike,int p_manaCost);
 
 };
 

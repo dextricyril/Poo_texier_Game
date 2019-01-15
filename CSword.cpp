@@ -1,8 +1,8 @@
 #include "CSword.h"
 
-CSword::CSword(std::string p_nom, int p_damage,int p_bonus,float p_criticalStrike , int p_durability)
+CSword::CSword(std::string p_name, int p_damage,int p_bonus,int p_criticalStrike , int p_durability)
 {
-    m_nom = p_nom;
+    m_name = p_name;
     m_damage = p_damage;
     m_bonus = p_bonus;
     m_criticalStrike = p_criticalStrike;

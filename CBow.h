@@ -9,7 +9,7 @@ class CBow : public CWeapon
         int m_nbArrow;
         void shoot();
         bool haveArrow();
-        CBow(std::string p_nom, int p_damage,int p_bonus,int p_criticalStrike,int p_nbArrow);
+        CBow(std::string p_name, int p_damage,int p_bonus,int p_criticalStrike,int p_nbArrow);
 };
 
 
