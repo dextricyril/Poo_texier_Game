@@ -14,10 +14,11 @@ CCharacter::CCharacter(std::string p_name, int p_hpMax, float p_dodge, CWeapon &
     /* initialize random seed: */
     srand (time(NULL));
     m_hpMax = p_hpMax;
-    m_hp = p_hpMax;
     m_dodge = p_dodge;
     m_weapon = &p_weapon;
     m_name = p_name;
+    m_hpMax = p_hpMax + m_weapon->m_bonus;
+    m_hp = p_hpMax + m_weapon->m_bonus;
 }
 
 CCharacter::CCharacter(std::string p_name, int p_hpMax, float p_dodge)
@@ -25,7 +26,6 @@ CCharacter::CCharacter(std::string p_name, int p_hpMax, float p_dodge)
     /* initialize random seed: */
     srand (time(NULL));
     m_hpMax = p_hpMax;
-    m_hp = p_hpMax;
     m_dodge = p_dodge;
     m_weapon = NULL;
     m_name = p_name;

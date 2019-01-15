@@ -5,11 +5,11 @@ CArcher::CArcher(std::string p_name, int p_hpMax,
 {
     srand (time(NULL));
     m_name = p_name;
-    m_hpMax = p_hpMax;
-    m_hp = p_hpMax;
-    m_agility = p_agility;
     m_weapon = (CBow*)&p_weapon;
-}
+    m_hpMax = p_hpMax + m_weapon->m_bonus;
+    m_hp = p_hpMax + m_weapon->m_bonus;
+    m_agility = p_agility;
+} 
 
 CArcher::CArcher(std::string p_name, int p_hpMax, 
             float p_dodge,int p_agility)
@@ -39,6 +39,8 @@ void CArcher::action()
 void CArcher::setBow(CBow* bow)
 {
     m_weapon = (CBow*)&bow;
+    m_hpMax += m_weapon->m_bonus; 
+    m_hp += m_weapon->m_bonus; 
 }
 
 void CArcher::unarmedAttack(CCharacter &p_ennemy)

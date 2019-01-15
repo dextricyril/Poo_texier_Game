@@ -4,11 +4,11 @@ CWizzard::CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellec
 {
     srand (time(NULL));
         m_name = p_name;
-        m_hpMax = p_hpMax;
-        m_hp = p_hpMax;
         m_intellect = p_intellect;
         m_mana = p_mana;
         m_weapon = (CStaff*)&p_weapon;
+        m_hpMax = p_hpMax + m_weapon->m_bonus;
+        m_hp = p_hpMax + m_weapon->m_bonus;
 }
 
 CWizzard::CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana)
@@ -35,6 +35,8 @@ void CWizzard::action()
 void CWizzard::setStaff(CStaff* p_staff)
 {
     m_weapon = p_staff;
+    m_hpMax += m_weapon->m_bonus; 
+    m_hp += m_weapon->m_bonus; 
 }
 
 

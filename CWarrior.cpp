@@ -5,12 +5,12 @@ CWarrior::CWarrior(std::string p_name, int p_hpMax, float p_dodge,int p_attack, 
     /* initialize random seed: */
     srand (time(NULL));
     m_name = p_name;
-    m_hpMax = p_hpMax;
-    m_hp = p_hpMax;
     m_dodge = p_dodge;
     m_attack = p_attack;
     m_shield = p_shield;
     m_weapon = (CSword*)&p_weapon;
+    m_hpMax = p_hpMax + m_weapon->m_bonus;
+    m_hp = p_hpMax + m_weapon->m_bonus; 
 }
 
 CWarrior::CWarrior(std::string p_name, int p_hpMax, float p_dodge,int p_attack, int p_shield)
@@ -34,6 +34,8 @@ CWarrior::~CWarrior()
 void CWarrior::setSword(CSword* sword)
 {
     m_weapon = sword;
+    m_hpMax += m_weapon->m_bonus; 
+    m_hp += m_weapon->m_bonus; 
 }
 
 void CWarrior::action()
