@@ -19,7 +19,7 @@ void  CGame::characterSelection()
         character_list[number] = currChara;
 
 
-        if(currChara->getClass()=="CWarrior")
+        if(currChara->getClass()=="CWarrior") //TODO change that into a ccharacter display method
         {
             CWarrior* warrior = (CWarrior*)currChara;
             std::cout << number <<". WARRIOR name: "  << warrior->m_name << std::endl;
@@ -52,7 +52,7 @@ void  CGame::characterSelection()
 
     
     int selectedNumber=0;
-    while(selectedNumber<1 || selectedNumber > number)
+    while(selectedNumber<1 || selectedNumber > number-1)
     {
         std::cout << "Choose P1 character: ";
         std::cin>>selectedNumber;
@@ -61,7 +61,7 @@ void  CGame::characterSelection()
     m_P1 = character_list[selectedNumber];
     selectedNumber=0;
 
-    while(selectedNumber<1 || selectedNumber > number)
+    while(selectedNumber<1 || selectedNumber > number-1)
     {
         std::cout << "Choose P2 character: ";
         std::cin>>selectedNumber;
@@ -70,13 +70,58 @@ void  CGame::characterSelection()
     m_P2 = character_list[selectedNumber];
     
     std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    setWeapon(m_P1);
+    std::cout << std::endl;
+    std::cout << std::endl;
+    setWeapon(m_P2);
+    std::cout << std::endl;
+    std::cout << std::endl;
+}
 
-    std::cout << "You have picked : " << m_P1->m_name << std::endl
-    << " class " << m_P1->getClass();
+void CGame::setWeapon(CCharacter* chara) // Open a weapon selection menu for the chara 
+{
+    std::string pClass = chara->getClass();
+    std::map<int, CWeapon*> weapons;
+    int index=1;
+    for (const auto& weapEntry : m_loadedSettings->weapon_list)
+    {
+        CWeapon*  currWeap = weapEntry.second;
+        currWeap->printWeaponStat();
+        if(pClass == "CWarrior" && currWeap->getClass()== "CSword")
+        {
+            std::cout << index <<": "<< currWeap->m_name << std::endl;
+            weapons[index] = currWeap;
+            index++;
+        }
+        else if (pClass == "CArcher" && currWeap->getClass()== "CBow")
+        {
+            std::cout << index <<": "<< currWeap->m_name << std::endl;
+            weapons[index] = currWeap;
+            index++;
+        }
+        else if (pClass == "CWizard" && currWeap->getClass()== "CStaff")
+        {
+            std::cout << index <<": "<< currWeap->m_name << std::endl;
+            weapons[index] = currWeap;
+            index++;
+        }
+    }
+    std::cout << index <<": unarmed" << std::endl;
 
-    std::cout << std::endl;
-    std::cout << std::endl;
-    std::cout << std::endl;
+    int selectedNumber=0;
+    while(selectedNumber<1 || selectedNumber > index)
+    {
+        std::cout << "Choose weapon: ";
+        std::cin>>selectedNumber;
+        std::cout << std::endl;
+    }
+    if(selectedNumber != index)
+    {
+        chara->setWeapon(weapons[selectedNumber]);
+    }
 }
 
 void displayPlayerStat(std::string player,CCharacter* chara)
@@ -92,5 +137,9 @@ void displayPlayerStat(std::string player,CCharacter* chara)
 void CGame::display() //TODO
 {
     displayPlayerStat("P1", m_P1);
+    std::cout << std::endl;
+    std::cout << std::endl;
     displayPlayerStat("P2", m_P2);
+    std::cout << std::endl;
+    std::cout << std::endl;
 }

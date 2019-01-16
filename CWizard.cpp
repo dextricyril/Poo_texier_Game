@@ -32,9 +32,10 @@ void CWizard::action()
     // check mana
 }
 
-void CWizard::setStaff(CStaff* p_staff)
+void CWizard::setWeapon(CWeapon* weapon)
 {
-    m_weapon = p_staff;
+    weapon->printWeaponStat();
+    m_weapon = (CStaff*)weapon;
     m_hpMax += m_weapon->m_bonus; 
     m_hp += m_weapon->m_bonus; 
 }
@@ -72,12 +73,12 @@ std::string CWizard::getClass()
 
 void CWizard::displayStats()
 {
-    if(m_weapon != NULL)
+    if(this->m_weapon != NULL)
     {
         std::cout << "Mana : " << this->m_mana << 
             " Mana cost : " << this->m_weapon->m_manaCost  << std::endl;
     }
-    {
+    else{
         std::cout << "Mana : " << this->m_mana << 
             " No weapon "  << std::endl;
     }

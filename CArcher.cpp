@@ -36,9 +36,9 @@ void CArcher::action()
     }
 }
 
-void CArcher::setBow(CBow* bow)
+void CArcher::setWeapon(CWeapon* weapon)
 {
-    m_weapon = (CBow*)&bow;
+    m_weapon = (CBow*)weapon;
     m_hpMax += m_weapon->m_bonus; 
     m_hp += m_weapon->m_bonus; 
 }

@@ -16,7 +16,7 @@ class CWarrior : public CCharacter
         void action();
         void defend();
         void repair();
-        void setSword(CSword* sword);
+        void setWeapon(CWeapon* weapon);
         void unarmedAttack(CCharacter &p_ennemy);
         void armedAttack(CCharacter &p_ennemy);
         void displayStats();

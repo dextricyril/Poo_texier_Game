@@ -12,5 +12,6 @@ class CGame
         ~CGame();
         void characterSelection();
         void display();
+        void setWeapon(CCharacter* chara);
 };
 #endif

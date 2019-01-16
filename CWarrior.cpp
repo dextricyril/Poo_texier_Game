@@ -31,9 +31,9 @@ CWarrior::~CWarrior()
 
 }
 
-void CWarrior::setSword(CSword* sword)
+void CWarrior::setWeapon(CWeapon* weapon)
 {
-    m_weapon = sword;
+    m_weapon = (CSword*)weapon;
     m_hpMax += m_weapon->m_bonus; 
     m_hp += m_weapon->m_bonus; 
 }

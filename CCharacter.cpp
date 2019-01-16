@@ -85,3 +85,10 @@ void CCharacter::displayStats()
 {
   
 }
+
+void CCharacter::setWeapon(CWeapon* weapon)
+{
+    m_weapon = (CWeapon*)&weapon;
+    m_hpMax += m_weapon->m_bonus; 
+    m_hp += m_weapon->m_bonus; 
+}

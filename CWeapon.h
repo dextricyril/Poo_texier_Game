@@ -17,6 +17,7 @@ class CWeapon
         CWeapon(std::string p_name, int p_damage,int p_bonus,int p_criticalStrike);
         virtual ~CWeapon();
         virtual std::string getClass();
+        virtual void printWeaponStat();
         bool criticalStrike();
 
 };

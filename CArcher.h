@@ -18,6 +18,7 @@ class CArcher : public CCharacter
         void unarmedAttack(CCharacter &p_ennemy);
         void armedAttack(CCharacter &p_ennemy);
         void displayStats();
+        void setWeapon(CWeapon* weapon);
         std::string getClass();
 };
 

@@ -36,3 +36,10 @@ bool CWeapon::criticalStrike()
     else
         return false;
 }
+
+void CWeapon::printWeaponStat()
+{
+    std::cout << m_name <<std::endl;
+    std::cout << "  damage: "<<m_damage << "  bonus: "<< m_bonus 
+        << " crit: " << m_criticalStrike << std::endl;
+}
