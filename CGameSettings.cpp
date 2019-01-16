@@ -59,7 +59,7 @@ CGameSettings::CGameSettings(std::string p_characterFilePath, std::string p_weap
                     intellect = std::stoi(readLine);
                 if( getline (m_characterFile,readLine) )
                     mana = std::stoi(readLine);
-                CCharacter* newPlayer = new CWizzard(name,health,dodge,intellect,mana);
+                CCharacter* newPlayer = new CWizard(name,health,dodge,intellect,mana);
                 character_list[newPlayer->m_name] = newPlayer;
             }
 

@@ -1,6 +1,6 @@
 #include "CWizard.h"
 
-CWizzard::CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana, CWeapon &p_weapon)
+CWizard::CWizard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana, CWeapon &p_weapon)
 {
     srand (time(NULL));
         m_name = p_name;
@@ -11,7 +11,7 @@ CWizzard::CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellec
         m_hp = p_hpMax + m_weapon->m_bonus;
 }
 
-CWizzard::CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana)
+CWizard::CWizard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana)
 {
     srand (time(NULL));
         m_name = p_name;
@@ -22,17 +22,17 @@ CWizzard::CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellec
         m_weapon = NULL;
 }
 
-CWizzard::~CWizzard()
+CWizard::~CWizard()
 {
 
 }
 
-void CWizzard::action()
+void CWizard::action()
 {
     // check mana
 }
 
-void CWizzard::setStaff(CStaff* p_staff)
+void CWizard::setStaff(CStaff* p_staff)
 {
     m_weapon = p_staff;
     m_hpMax += m_weapon->m_bonus; 
@@ -40,12 +40,12 @@ void CWizzard::setStaff(CStaff* p_staff)
 }
 
 
-void CWizzard::unarmedAttack(CCharacter &p_ennemy)
+void CWizard::unarmedAttack(CCharacter &p_ennemy)
 {
     p_ennemy.applyDamage(m_intellect/3);
 }
 
-void CWizzard::armedAttack(CCharacter &p_ennemy)
+void CWizard::armedAttack(CCharacter &p_ennemy)
 {
     if(m_weapon->criticalStrike())
     {
@@ -58,14 +58,14 @@ void CWizzard::armedAttack(CCharacter &p_ennemy)
     m_mana -=  m_weapon->m_manaCost;
 }
 
-void CWizzard::recoverMana()
+void CWizard::recoverMana()
 {
     int recovery = rand() % 5 + 2;
     m_mana += recovery;
 
 }
 
-std::string CWizzard::getClass()
+std::string CWizard::getClass()
 {
-    return "CWizzard";
+    return "CWizard";
 }

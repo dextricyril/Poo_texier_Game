@@ -1,15 +1,15 @@
-#ifndef CWIZZARD
-#define CWIZZARD
+#ifndef CWIZARD
+#define CWIZARD
 
 #include "CCharacter.h"
 #include "CStaff.h"
 
-class CWizzard : public CCharacter
+class CWizard : public CCharacter
 {
     public :
-    CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana,CWeapon &p_weapon);
-    CWizzard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana);
-    ~CWizzard();
+    CWizard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana,CWeapon &p_weapon);
+    CWizard(std::string p_name, int p_hpMax, float p_dodge,int p_intellect, int p_mana);
+    ~CWizard();
     int m_mana;
     int m_intellect;
     CStaff* m_weapon;
