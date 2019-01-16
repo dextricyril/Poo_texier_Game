@@ -54,11 +54,43 @@ void  CGame::characterSelection()
     int selectedNumber=0;
     while(selectedNumber<1 || selectedNumber > number)
     {
-        std::cout << "Choose your character: ";
+        std::cout << "Choose P1 character: ";
         std::cin>>selectedNumber;
         std::cout << std::endl;
     }
-    m_P1 = *(character_list[selectedNumber]);
-    std::cout << "You have picked : " << m_P1.m_name << " class " << m_P1.getClass();
+    m_P1 = character_list[selectedNumber];
+    selectedNumber=0;
+
+    while(selectedNumber<1 || selectedNumber > number)
+    {
+        std::cout << "Choose P2 character: ";
+        std::cin>>selectedNumber;
+        std::cout << std::endl;
+    }
+    m_P2 = character_list[selectedNumber];
     
+    std::cout << std::endl;
+
+    std::cout << "You have picked : " << m_P1->m_name << std::endl
+    << " class " << m_P1->getClass();
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+}
+
+void displayPlayerStat(std::string player,CCharacter* chara)
+{
+    std::cout << player << " "<< chara-> m_name << std::endl;
+    std::cout << "---------------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "HP / HPmax  " << chara->m_hp << "/" << chara->m_hpMax << std::endl;
+    chara->displayStats();
+    std::cout << "---------------------------------------------------------------------------------------------------------" << std::endl;
+ 
+}
+
+void CGame::display() //TODO
+{
+    displayPlayerStat("P1", m_P1);
+    displayPlayerStat("P2", m_P2);
 }

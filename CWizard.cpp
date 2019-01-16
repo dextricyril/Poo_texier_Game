@@ -69,3 +69,16 @@ std::string CWizard::getClass()
 {
     return "CWizard";
 }
+
+void CWizard::displayStats()
+{
+    if(m_weapon != NULL)
+    {
+        std::cout << "Mana : " << this->m_mana << 
+            " Mana cost : " << this->m_weapon->m_manaCost  << std::endl;
+    }
+    {
+        std::cout << "Mana : " << this->m_mana << 
+            " No weapon "  << std::endl;
+    }
+}

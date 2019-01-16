@@ -111,3 +111,14 @@ std::string CWarrior::getClass()
 {
     return "CWarrior";
 }
+
+void CWarrior::displayStats()
+{
+    if(m_weapon != NULL)
+        std::cout  << "Shield up : " << this->numberOfTurnDefended 
+            << " Sword durability : " << m_weapon->m_durability<<"/"<<m_weapon->m_durabilityMax << std::endl;
+    else
+        std::cout  << "Shield up : " << this->numberOfTurnDefended
+        << " No weapon" << std::endl;
+    
+}

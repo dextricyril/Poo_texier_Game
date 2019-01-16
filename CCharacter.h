@@ -22,6 +22,7 @@ class CCharacter
         virtual void armedAttack(CCharacter &p_ennemy);
         virtual void applyDamage(int p_damage);
         virtual std::string getClass();
+        virtual void displayStats();
         bool dodge();
         bool isAlive();
 };

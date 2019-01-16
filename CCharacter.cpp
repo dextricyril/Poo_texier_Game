@@ -80,3 +80,8 @@ std::string CCharacter::getClass()
 {
     return "CCharacter";
 }
+
+void CCharacter::displayStats()
+{
+  
+}

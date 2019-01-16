@@ -19,6 +19,7 @@ class CWarrior : public CCharacter
         void setSword(CSword* sword);
         void unarmedAttack(CCharacter &p_ennemy);
         void armedAttack(CCharacter &p_ennemy);
+        void displayStats();
         void applyDamage(int p_damage);
         std::string getClass();
 };

@@ -1,4 +1,5 @@
 #include "CGameSettings.h"
+#include "CGame.h"
 #include "locale.h"
 
 int main(int argc, char ** argv)
@@ -17,4 +18,8 @@ int main(int argc, char ** argv)
     CGameSettings* setting = new  CGameSettings(fileCharacter, fileWeapon);
     setting->printCharacterList();
     setting->printWeaponList();
+    CGame* game = new CGame(*setting);
+    game->characterSelection();
+    game->display();
 }
+

@@ -74,3 +74,11 @@ std::string CArcher::getClass()
 {
     return "CArcher";
 }
+
+void CArcher::displayStats()
+{
+    if(m_weapon != NULL)
+        std::cout  <<"Arrows left : " << m_weapon->m_nbArrow << std::endl;
+    else
+        std::cout  <<"No weapon" << std::endl;
+}
