@@ -60,7 +60,7 @@ bool CCharacter::dodge()
     return (m_dodge*100 > dice);
 }
 
-void CCharacter::action()
+void CCharacter::action(CCharacter &p_ennemy)
 {
     std::cout << " Call to  CCharacter::action  not defined"  << std::endl;
 }

@@ -27,12 +27,64 @@ CArcher::~CArcher()
 
 }
 
-void CArcher::action()
+void CArcher::action(CCharacter &p_ennemy)
 {
-    std::cout<<" CArcher::action TO BE IMPLEMENTED" << std::endl;
-    if(this->m_weapon->haveArrow())
+    int selectedNumber=0;
+    while(selectedNumber<1 || selectedNumber > 3)
     {
-            
+        std::cout << std::endl;
+        std::cout << "1 : Attack" << std::endl;
+        std::cout << "2 : Shoot Arrow" << std::endl;
+        std::cout << "3 : Take Aim" << std::endl;
+        std::cout << std::endl;
+        std::cin>>selectedNumber;
+    }
+    
+    switch (selectedNumber)
+    {
+        case 1 : 
+            this->unarmedAttack(p_ennemy);
+            break;
+        case 2 : 
+           if(m_weapon != NULL)
+            {
+                if(m_weapon->haveArrow())
+                {
+                    this->armedAttack(p_ennemy);
+                }
+                else
+                {
+                    std::cout << "NO ARROW" << std::endl;
+                    this->action(p_ennemy);
+                }
+            }
+            else
+            {
+                std::cout << "NO WEAPON" << std::endl;
+                this->action(p_ennemy);
+            }
+            break;
+        case 3 : 
+        if(m_weapon != NULL)
+            {
+                if(m_weapon->haveArrow())
+                {
+                    this->aim();
+                }
+                else
+                {
+                    std::cout << "NO ARROW" << std::endl;
+                    this->action(p_ennemy);
+                }
+            }
+            else
+            {
+                std::cout << "NO WEAPON" << std::endl;
+                this->action(p_ennemy);
+            }
+            break;
+            default:
+                break;
     }
 }
 
@@ -55,12 +107,15 @@ void CArcher::armedAttack(CCharacter &p_ennemy)
     {
         dem = m_agility * (1+(m_turnAimed*1.33));
         dem = 0.90 * (dem + 2 *m_weapon->m_damage); // twice weapon damage
+        
     }
     else
     {
         dem = m_agility * (1 + (m_turnAimed*1.33));
         dem = 0.90 * (dem + m_weapon->m_damage);
     }
+    p_ennemy.applyDamage(dem);
+    m_weapon->shoot();
     m_turnAimed = 0;
 }
 
@@ -78,7 +133,8 @@ std::string CArcher::getClass()
 void CArcher::displayStats()
 {
     if(m_weapon != NULL)
-        std::cout  <<"Arrows left : " << m_weapon->m_nbArrow << std::endl;
+        std::cout  <<"Arrows left : " << m_weapon->m_nbArrow  
+            <<" Turn aimed : " << this->m_turnAimed << std::endl;
     else
         std::cout  <<"No weapon" << std::endl;
 }

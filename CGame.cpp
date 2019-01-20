@@ -86,25 +86,24 @@ void CGame::setWeapon(CCharacter* chara) // Open a weapon selection menu for the
     std::string pClass = chara->getClass();
     std::map<int, CWeapon*> weapons;
     int index=1;
-    for (const auto& weapEntry : m_loadedSettings->weapon_list)
+    for (const auto& weapEntry : m_loadedSettings->weapon_list) //build selectable list
     {
         CWeapon*  currWeap = weapEntry.second;
-        currWeap->printWeaponStat();
         if(pClass == "CWarrior" && currWeap->getClass()== "CSword")
         {
-            std::cout << index <<": "<< currWeap->m_name << std::endl;
+            std::cout << index <<": "; currWeap->printWeaponStat() ;std::cout << std::endl;
             weapons[index] = currWeap;
             index++;
         }
         else if (pClass == "CArcher" && currWeap->getClass()== "CBow")
         {
-            std::cout << index <<": "<< currWeap->m_name << std::endl;
+            std::cout << index <<": "; currWeap->printWeaponStat() ;std::cout << std::endl;
             weapons[index] = currWeap;
             index++;
         }
         else if (pClass == "CWizard" && currWeap->getClass()== "CStaff")
         {
-            std::cout << index <<": "<< currWeap->m_name << std::endl;
+            std::cout << index <<": "; currWeap->printWeaponStat() ;std::cout << std::endl;
             weapons[index] = currWeap;
             index++;
         }
@@ -142,4 +141,24 @@ void CGame::display() //TODO
     displayPlayerStat("P2", m_P2);
     std::cout << std::endl;
     std::cout << std::endl;
+}
+
+void CGame::fight()
+{
+    while(m_P1->isAlive())
+    {
+        display();
+        std::cout << "PLAYER 1 TURN" << std::endl;
+        m_P1->action(*m_P2);
+        display();
+        if(!m_P2->isAlive())
+        {
+            std::cout << "PLAYER 1 VICTORY" << std::endl;
+            break;
+        }
+        std::cout << "PLAYER 2 TURN" << std::endl;
+        m_P2->action(*m_P1);
+    }
+    if(m_P2->isAlive())
+        std::cout << "PLAYER 2 VICTORY" << std::endl;
 }

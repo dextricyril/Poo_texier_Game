@@ -21,5 +21,6 @@ int main(int argc, char ** argv)
     CGame* game = new CGame(*setting);
     game->characterSelection();
     game->display();
+    game->fight();
 }
 

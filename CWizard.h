@@ -14,7 +14,7 @@ class CWizard : public CCharacter
     int m_intellect;
     CStaff* m_weapon;
     void recoverMana();
-    void action();
+    void action(CCharacter &p_ennemy);
     void setWeapon(CWeapon* weapon);
     void unarmedAttack(CCharacter &p_ennemy);
     void armedAttack(CCharacter &p_ennemy);

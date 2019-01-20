@@ -27,9 +27,49 @@ CWizard::~CWizard()
 
 }
 
-void CWizard::action()
+void CWizard::action(CCharacter &p_ennemy)
 {
-    // check mana
+    int selectedNumber=0;
+    while(selectedNumber<1 || selectedNumber > 3)
+    {
+        std::cout << "1 : Attack" << std::endl;
+        std::cout << "2 : Magic Attack" << std::endl;
+        std::cout << "3 : Regenerate Mana" << std::endl;
+        std::cout << std::endl;
+        std::cin>>selectedNumber;
+        std::cout << std::endl;
+    }
+    
+    switch (selectedNumber)
+    {
+        case 1:
+                this->unarmedAttack(p_ennemy);
+            break;
+        case 2:
+            if(m_weapon != NULL)
+            {
+                if(m_mana>m_weapon->m_manaCost)
+                {
+                    this->armedAttack(p_ennemy);
+                }
+                else
+                {
+                    std::cout << "NOT ENOUGH MANA" << std::endl;
+                    this->action(p_ennemy);
+                }
+            }
+            else
+            {
+                std::cout << "NO WEAPON" << std::endl;
+                this->action(p_ennemy);
+            }
+            break;
+        case 3:
+                this->recoverMana();
+            break;
+        default:
+            break;
+    }
 }
 
 void CWizard::setWeapon(CWeapon* weapon)
@@ -50,6 +90,7 @@ void CWizard::armedAttack(CCharacter &p_ennemy)
 {
     if(m_weapon->criticalStrike())
     {
+        std::cout << "CRITICAL HIT" << std::endl;
         p_ennemy.applyDamage((m_intellect + (2*m_weapon->m_damage) + 0.5* m_weapon->m_manaCost)*1.10);
     }
     else
@@ -63,7 +104,7 @@ void CWizard::recoverMana()
 {
     int recovery = rand() % 5 + 2;
     m_mana += recovery;
-
+    std::cout << "Recovered " << recovery << " mana" << std::endl;
 }
 
 std::string CWizard::getClass()

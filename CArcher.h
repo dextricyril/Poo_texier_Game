@@ -12,7 +12,7 @@ class CArcher : public CCharacter
         int m_agility;
         int m_turnAimed;
         CBow* m_weapon;
-        void action();
+        void action(CCharacter &p_ennemy);
         void setBow(CBow* bow);
         void aim();
         void unarmedAttack(CCharacter &p_ennemy);

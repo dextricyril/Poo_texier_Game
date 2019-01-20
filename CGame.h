@@ -13,5 +13,6 @@ class CGame
         void characterSelection();
         void display();
         void setWeapon(CCharacter* chara);
+        void fight();
 };
 #endif
