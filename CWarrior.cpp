@@ -38,33 +38,57 @@ void CWarrior::setWeapon(CWeapon* weapon)
     m_hp += m_weapon->m_bonus; 
 }
 
-void CWarrior::action()
+void CWarrior::action(CCharacter &p_ennemy)
 {
-    if (isAlive())
+    int selectedNumber=0;
+    while(selectedNumber<1 || selectedNumber > 4)
     {
-    //list all possible action
-    //wait for user input
-    //do not enable sword use if broken
-        if(!m_weapon->isBroken())
-        {
-            
-        }
+        std::cout << "1 : Attack" << std::endl;
+        std::cout << "2 : Sword Attack" << std::endl;
+        std::cout << "3 : Raise Shield" << std::endl;
+        std::cout << "4 : Repair Sword" << std::endl;
+        std::cout << std::endl;
+        std::cin>>selectedNumber;
+        std::cout << std::endl;
     }
-    else 
+
+    switch (selectedNumber)
     {
-        
-    }    
+        case 1:
+                this->unarmedAttack(p_ennemy);
+            break;
+        case 2:
+            if(m_weapon != NULL)
+            {
+                if(!m_weapon->isBroken())
+                {
+                    this->armedAttack(p_ennemy);
+                }
+                else
+                {
+                    std::cout << "SWORD IS BROKEN" << std::endl;
+                    this->action(p_ennemy);
+                }
+            }
+            else
+            {
+                std::cout << "NO WEAPON" << std::endl;
+                this->action(p_ennemy);
+            }
+            break;
+        case 3:
+                this->defend();
+            break;
+        case 4:
+                this->repair();
+            break;
+        default:
+            break;
+    }
 }
 
 void CWarrior::armedAttack(CCharacter &p_ennemy)
 {
-    if (m_weapon == NULL)
-    {
-        std::cout << "Armed attack without sword, using fist" << std::endl;
-        unarmedAttack(p_ennemy);
-        return;
-    }
-
     float dem;
     if(m_weapon->criticalStrike())
     {
@@ -77,12 +101,17 @@ void CWarrior::armedAttack(CCharacter &p_ennemy)
         dem = 0.75 * (dem + m_attack);
     }
     m_weapon->use();
-    p_ennemy.applyDamage(2*m_weapon->m_damage);
-    //TODO Finish
-    /*
-    if weapon is broken 
-    weapon durabilité--
-    p_enney.applyDamage((m_attack+m_damage)*/
+    if (m_weapon->isBroken())
+    {
+        std::cout << "SWORD BROKE" << std::endl;
+    }
+    p_ennemy.applyDamage(dem);
+
+}
+
+void  CWarrior::defend()
+{
+    numberOfTurnDefended = rand() % 2 + 1;  // 1 to 3 turn protected
 }
 
 void CWarrior::unarmedAttack(CCharacter &p_ennemy)
@@ -93,17 +122,31 @@ void CWarrior::applyDamage(int p_damage)
 {
     if (numberOfTurnDefended>0)
     {
+        std::cout << "SHIELDED" << std::endl;
         numberOfTurnDefended--;
-        if (p_damage > (0.25 * m_shield))
-        {
-             m_hp = p_damage - (0.25 * m_shield); 
-        }
+        p_damage -= (0.25 * m_shield);
+        this->CCharacter::applyDamage(p_damage);
     }
     else
     {
-        m_hp -= p_damage;
-        if(m_hp < 0)
-            m_hp = 0;
+        this->CCharacter::applyDamage(p_damage);
+    }
+}
+
+void CWarrior::repair()
+{
+    if(m_weapon->isBroken())
+    {
+        m_weapon->m_durability++;
+    }
+    else
+    {
+        int recovery = rand() % 12 + 3;
+        m_weapon->m_durability+= recovery;
+        if(m_weapon->m_durability > m_weapon->m_durabilityMax)
+        {
+            m_weapon->m_durability = m_weapon->m_durabilityMax;
+        }
     }
 }
 

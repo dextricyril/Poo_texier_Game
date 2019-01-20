@@ -13,7 +13,7 @@ class CWarrior : public CCharacter
         int m_shield;
         int numberOfTurnDefended; // 0 means no shield defence
         CSword* m_weapon;
-        void action();
+        void action(CCharacter &p_ennemy);
         void defend();
         void repair();
         void setWeapon(CWeapon* weapon);
