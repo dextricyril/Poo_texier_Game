@@ -3,6 +3,10 @@
 
 #include "CGameSettings.h"
 
+#define whiteColor std::cout<<"\033[37;1m"
+#define P1Color std::cout<<"\033[31;1m"
+#define P2Color std::cout<<"\033[36m"
+
 class CGame
 {
     public:

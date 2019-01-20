@@ -151,7 +151,6 @@ void CGameSettings::printCharacterList()
 {
     for (const auto& x : character_list)
     {
-        //std::cout <<  x.first   <<  "fisrt: " << std::endl;
         std::cout << "name: "  << x.second->m_name <<  std::endl;
         std::cout  << "health point: " <<x.second->m_hp << std::endl;
     }
@@ -161,7 +160,6 @@ void CGameSettings::printWeaponList()
 {
     for (const auto& x : weapon_list)
     {
-        //std::cout <<  x.first   <<  "fisrt: " << std::endl;
         std::cout << "Weapon name: "  << x.second->m_name <<  std::endl;
         std::cout  << "Damage point: " <<x.second->m_damage << std::endl;
         std::cout  << "Crit point: " <<x.second->m_criticalStrike << std::endl;

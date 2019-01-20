@@ -10,6 +10,7 @@ void  CGame::characterSelection()
     std::map<int, CCharacter*> character_list;
     int number = 1;
 
+    std::cout << std::endl;
     std::cout << "list of characters :" << std::endl;
     for (const auto& charaEntry : m_loadedSettings->character_list)
     {
@@ -34,7 +35,7 @@ void  CGame::characterSelection()
             std::cout << number <<". ARCHER name: "  << archer->m_name << std::endl;
             std::cout <<   "health point: " << archer->m_hpMax <<
                 " dodge: " << archer->m_dodge <<
-                " attack: " << archer->m_agility << std::endl;
+                " agility: " << archer->m_agility << std::endl;
         }
         else if (currChara->getClass()=="CWizard")
         {
@@ -42,7 +43,8 @@ void  CGame::characterSelection()
             std::cout << number <<". Wizard name: "  << wizard->m_name << std::endl;
             std::cout <<   "health point: " << wizard->m_hpMax <<
                 " dodge: " << wizard->m_dodge <<
-                " attack: " << wizard->m_intellect << std::endl;
+                " intellect: " << wizard->m_intellect <<
+                " mana: " << wizard->m_mana << std::endl;
         }
 
         std::cout << std::endl; // jump line at end of description
@@ -50,7 +52,7 @@ void  CGame::characterSelection()
         //std::cout <<  x.first   <<  "fisrt: " << std::endl;
     }
 
-    
+    P1Color;
     int selectedNumber=0;
     while(selectedNumber<1 || selectedNumber > number-1)
     {
@@ -59,8 +61,9 @@ void  CGame::characterSelection()
         std::cout << std::endl;
     }
     m_P1 = character_list[selectedNumber];
-    selectedNumber=0;
 
+    P2Color;
+    selectedNumber=0;
     while(selectedNumber<1 || selectedNumber > number-1)
     {
         std::cout << "Choose P2 character: ";
@@ -71,12 +74,13 @@ void  CGame::characterSelection()
     
     std::cout << std::endl;
     std::cout << std::endl;
-    std::cout << std::endl;
-    std::cout << std::endl;
+    P1Color;
     setWeapon(m_P1);
     std::cout << std::endl;
     std::cout << std::endl;
+    P2Color;
     setWeapon(m_P2);
+    whiteColor;
     std::cout << std::endl;
     std::cout << std::endl;
 }
@@ -86,6 +90,7 @@ void CGame::setWeapon(CCharacter* chara) // Open a weapon selection menu for the
     std::string pClass = chara->getClass();
     std::map<int, CWeapon*> weapons;
     int index=1;
+    std::cout << "list of weapons :" << std::endl;
     for (const auto& weapEntry : m_loadedSettings->weapon_list) //build selectable list
     {
         CWeapon*  currWeap = weapEntry.second;
@@ -133,8 +138,10 @@ void displayPlayerStat(std::string player,CCharacter* chara)
  
 }
 
-void CGame::display() //TODO
+void CGame::display() //
 {
+    whiteColor;
+    std::cout << std::endl;
     displayPlayerStat("P1", m_P1);
     std::cout << std::endl;
     std::cout << std::endl;
@@ -148,14 +155,17 @@ void CGame::fight()
     while(m_P1->isAlive())
     {
         display();
+        P1Color;
         std::cout << "PLAYER 1 TURN" << std::endl;
         m_P1->action(*m_P2);
         display();
         if(!m_P2->isAlive())
         {
-            std::cout << "PLAYER 1 VICTORY" << std::endl;
+            P1Color;
+            std::cout <<  "PLAYER 1 VICTORY" << std::endl;
             break;
         }
+        P2Color;
         std::cout << "PLAYER 2 TURN" << std::endl;
         m_P2->action(*m_P1);
     }

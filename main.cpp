@@ -8,19 +8,17 @@ int main(int argc, char ** argv)
     if(argc != 3)
     {
         std::cerr << "Not the right amount of file provided" << std::endl; 
+        std::cerr << "USAGE : use CharacterFile WeaponFile" << std::endl; 
         return -1;
     }
     
     std::string fileCharacter = argv[1];
     std::string fileWeapon = argv[2];
-    std::cout << "  Fichier 1 :   " << fileCharacter << "   Fichier 2 :   " << fileWeapon << std::endl;;
+    std::cout << "File 1 :   " << fileCharacter << "   File 2 :   " << fileWeapon << std::endl;;
 
     CGameSettings* setting = new  CGameSettings(fileCharacter, fileWeapon);
-    setting->printCharacterList();
-    setting->printWeaponList();
     CGame* game = new CGame(*setting);
     game->characterSelection();
-    game->display();
     game->fight();
 }
 
