@@ -10,6 +10,7 @@ class CStaff : public CWeapon
         std::string getClass();
         CStaff(std::string p_nom, int p_damage,int p_bonus,
         int p_criticalStrike,int p_manaCost);
+        void printWeaponStat();
 
 };
 

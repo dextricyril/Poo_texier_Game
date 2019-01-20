@@ -26,3 +26,9 @@ std::string CBow::getClass()
 {
     return "CBow";
 }
+
+void CBow::printWeaponStat()
+{
+    this->CWeapon::printWeaponStat();
+    std::cout << "Number of Arrow : "  << m_nbArrow << std::endl;
+}

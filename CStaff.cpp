@@ -14,3 +14,9 @@ std::string CStaff::getClass()
 {
     return "CStaff";
 }
+
+void CStaff::printWeaponStat()
+{
+    this-> CWeapon::printWeaponStat();
+    std::cout << "Mana Cost : " << m_manaCost <<std::endl;
+}
